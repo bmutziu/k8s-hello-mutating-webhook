@@ -9,16 +9,16 @@ spec:
       containers:
       - name: webhook-cert-setup
         # This is a minimal kubectl image based on Alpine Linux that signs certificates using the k8s extension api server
-        image: quay.io/didil/k8s-webhook-cert-manager:0.13.19-1-a
+        image: bmutziu/k8s-webhook-cert-manager:latest
         command: ["./generate_certificate.sh"]
         args:
           - "--service"
           - "hello-webhook-service"
           - "--webhook"
-          - "hello-webhook.leclouddev.com"
+          - "hello-webhook.bmutziu.me"
           - "--secret"
           - "hello-tls-secret"
           - "--namespace"
           - "default"
-      restartPolicy: OnFailure
+      restartPolicy: Never
   backoffLimit: 3
